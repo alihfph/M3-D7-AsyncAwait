@@ -21,6 +21,7 @@ let cardTemplate = (user1)=>{
     <a class="dropdown-item" href="#">${user1.email}</a>
   </div>
 </div>
+<p class="card-text">${user1.address.street} ${user1.address.suite}${user1.address.city}${user1.address.zipcode}</p>
 </div>`
 
 }
@@ -65,9 +66,12 @@ let result = users.map(x => x.name)
 
 
 const creatAddress = (useradd) =>{
-  const addressUser = document.getElementById("address")
-  addressUser.innerText  = ` <p class="card-text">${useradd.address.street}+","+${useradd.address.suite}+","+${useradd.address.city}+","+${useradd.address.zipcode}</p>`
+ return ` <p class="card-text">${useradd.address.street}+","+${useradd.address.suite}+","+${useradd.address.city}+","+${useradd.address.zipcode}</p>`
 
+}
+const putAddress =()=>{
+  const addressUser = document.getElementById("address")
+  addressUser.innerText= creatAddress().users
 }
 
 window.onload =()=>{
