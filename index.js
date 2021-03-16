@@ -25,6 +25,8 @@ let cardTemplate = (user1)=>{
 
 }
 
+const userInput  = document.getElementsByClassName("form-control").value
+
 // let dropdownTemplate = (useroptions)=>{
 //   return `<div class="dropdown">
 //   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,9 +50,25 @@ const createCards = () => {
   const container =document.getElementById("container");
   container.innerHTML = "";
   users.forEach((userInfo) => {
-    container.innerHTML += cardTemplate(userInfo);
+    container.innerHTML += cardTemplate(userInfo)
   });
+  const searchInput = document.getElementById("search")
+  searchInput.classList.remove("d-none")
+
 };
+
+const searchUsers = users.filter(user=>user.userInput) 
+
+// get the name
+let result = users.map(x => x.name)
+
+
+
+const creatAddress = (useradd) =>{
+  const addressUser = document.getElementById("address")
+  addressUser.innerText  = ` <p class="card-text">${useradd.address.street}+","+${useradd.address.suite}+","+${useradd.address.city}+","+${useradd.address.zipcode}</p>`
+
+}
 
 window.onload =()=>{
   fetch(
